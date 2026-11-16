@@ -76,6 +76,31 @@ nav .btn{padding:10px 18px;font-size:14px}
 .ruler .track i{color:var(--teal);font-style:normal}
 @keyframes roll{to{transform:translateX(-50%)}}
 
+/* VITRINE DE CARTAZES */
+.vitrine{padding-block:84px 30px;overflow:hidden}
+.vitrine .top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:26px}
+.vitrine .top .head{margin:0}
+.vitrine .arrows{display:flex;gap:10px;flex-shrink:0}
+.vitrine .arrows button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:18px;cursor:pointer;transition:.2s}
+.vitrine .arrows button:hover{border-color:var(--teal2);color:var(--teal2)}
+.vitrine .arrows button:disabled{opacity:.3;cursor:default}
+.rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(20px,calc((100vw - 1200px)/2 + 20px));padding-inline:max(20px,calc((100vw - 1200px)/2 + 20px));padding-bottom:6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{display:none}
+.poster{flex:0 0 clamp(250px,74vw,300px);scroll-snap-align:start;border-radius:20px;overflow:hidden;border:1px solid #19b3a633;background:var(--panel);display:flex;flex-direction:column;transition:transform .3s,border-color .3s,box-shadow .3s}
+.poster:hover{transform:translateY(-4px);border-color:#19b3a6aa;box-shadow:0 30px 60px -30px #19b3a688}
+.poster.pj{border-color:#e3b23c33}
+.poster.pj:hover{border-color:#e3b23caa;box-shadow:0 30px 60px -30px #e3b23c66}
+.poster img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.poster .ft{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px}
+.poster .ft span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal2)}
+.poster.pj .ft span{color:var(--gold2)}
+.poster .ft b{font-family:var(--f-disp);font-weight:800;font-size:15px;white-space:nowrap}
+.poster .ft b i{font-style:normal;color:var(--gold2);margin-left:6px}
+.dots{display:flex;justify-content:center;gap:7px;margin-top:20px}
+.dots i{width:7px;height:7px;border-radius:99px;background:#ffffff26;transition:.3s}
+.dots i.on{width:22px;background:var(--teal)}
+@media (max-width:680px){.vitrine .arrows{display:none}.vitrine{padding-block:64px 20px}}
+
 /* COMPOSIÇÃO */
 .comp .grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
 .venn{position:relative;max-width:500px;margin-inline:auto;width:100%}
@@ -111,6 +136,7 @@ nav .btn{padding:10px 18px;font-size:14px}
 .talk .cta{display:inline-block;margin-top:22px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:#111;background:var(--gold);padding:11px 16px;border-radius:999px;position:relative;z-index:1;transition:.2s}
 .talk .cta:hover{background:var(--gold2)}
 .offer{position:relative;background:linear-gradient(180deg,#0f1a19,#0a1110);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:.3s;min-width:0}
+[id]{scroll-margin-top:100px}
 .offer:hover{border-color:#19b3a688;transform:translateY(-4px);box-shadow:0 30px 70px -30px #19b3a655}
 .offer .art{aspect-ratio:16/10;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
 .offer .art svg{width:100%;height:100%}
@@ -291,6 +317,29 @@ footer .sign{font-family:var(--f-serif);font-style:italic;font-size:22px;color:#
   <span>NFL em 1 hora</span><i>·</i><span>Destrave o comunicador</span><i>·</i><span>Business advisor</span><i>·</i><span>BONITALKS</span><i>·</i><span>Embaixador de marca</span><i>·</i><span>Eventos e workshops</span><i>·</i>
 </div></div>
 
+<!-- VITRINE DE CARTAZES -->
+<section class="vitrine" id="vitrine" aria-label="Todos os serviços">
+  <div class="wrap top">
+    <div class="head">
+      <span class="mono">Tudo o que eu entrego</span>
+      <h2>Escolha o seu jogo.</h2>
+      <p>Arrasta pro lado e toca no que te interessa.</p>
+    </div>
+    <div class="arrows"><button type="button" data-d="-1" aria-label="Anterior">←</button><button type="button" data-d="1" aria-label="Próximo">→</button></div>
+  </div>
+  <div class="rail" id="rail">
+    <a class="poster" href="#nfl1h"><img src="img/cartazes/nfl-1-hora.jpg" alt="NFL em 1 hora: entenda o futebol americano com Lucas Bonini" loading="lazy" decoding="async"><div class="ft"><span>Para você</span><b>R$99<i>→</i></b></div></a>
+    <a class="poster" href="#destrava"><img src="img/cartazes/destrave.jpg" alt="Destrave o comunicador: seu personal trainer de conteúdo" loading="lazy" decoding="async"><div class="ft"><span>Para você</span><b>R$397<i>→</i></b></div></a>
+    <a class="poster pj" href="#qb"><img src="img/cartazes/quarterback.jpg" alt="BONITALKS: Seja o quarterback da sua vida" loading="lazy" decoding="async"><div class="ft"><span>Palestra</span><b>Proposta<i>→</i></b></div></a>
+    <a class="poster pj" href="#mentalidade"><img src="img/cartazes/mentalidade.jpg" alt="BONITALKS: Mentalidade competitiva" loading="lazy" decoding="async"><div class="ft"><span>Palestra</span><b>Proposta<i>→</i></b></div></a>
+    <a class="poster pj" href="#bsm"><img src="img/cartazes/brand-sports.jpg" alt="Brand, Sports &amp; Marketing Advisor" loading="lazy" decoding="async"><div class="ft"><span>Para marcas</span><b>Proposta<i>→</i></b></div></a>
+    <a class="poster pj" href="#advisor"><img src="img/cartazes/creative-advisor.jpg" alt="Creative Advisor: aconselhamento criativo sob medida" loading="lazy" decoding="async"><div class="ft"><span>Para negócios</span><b>Proposta<i>→</i></b></div></a>
+    <a class="poster pj" href="#embaixador"><img src="img/cartazes/embaixador.jpg" alt="Embaixador de marca" loading="lazy" decoding="async"><div class="ft"><span>Para marcas</span><b>Proposta<i>→</i></b></div></a>
+    <a class="poster pj" href="#eventos"><img src="img/cartazes/eventos.jpg" alt="Eventos e workshops" loading="lazy" decoding="async"><div class="ft"><span>Ao vivo</span><b>Proposta<i>→</i></b></div></a>
+  </div>
+  <div class="dots" id="dots" aria-hidden="true"></div>
+</section>
+
 <!-- COMPOSIÇÃO -->
 <section class="sec comp" id="quem"><div class="wrap">
   <div class="grid">
@@ -455,30 +504,30 @@ footer .sign{font-family:var(--f-serif);font-style:italic;font-size:22px;color:#
 
   <div class="band pj" style="margin-bottom:16px"><span class="mono" style="color:var(--gold2)">BONITALKS · palestras em 2 formatos</span><hr></div>
   <div class="talks">
-    <div class="talk"><span class="k">Formato 01</span><h3>Seja o Quarterback da Sua Vida</h3>
+    <div class="talk" id="qb"><span class="k">Formato 01</span><h3>Seja o Quarterback da Sua Vida</h3>
       <p>O quarterback lê o campo, decide em segundos e assume a responsabilidade pela jogada. Uma palestra sobre liderança, tomada de decisão e protagonismo, contada com as histórias da NFL.</p>
       <div class="tags"><span>Liderança</span><span>Decisão</span><span>Protagonismo</span></div>
       <a class="cta wa-link" data-msg="Oi Lucas! Quero uma proposta da palestra Seja o Quarterback da Sua Vida.">PEDIR PROPOSTA ↗</a><span class="big">QB</span></div>
-    <div class="talk"><span class="k">Formato 02</span><h3>Mentalidade Competitiva</h3>
+    <div class="talk" id="mentalidade"><span class="k">Formato 02</span><h3>Mentalidade Competitiva</h3>
       <p>O que os campeões fazem diferente quando o placar aperta. Uma palestra sobre performance, disciplina e resiliência, pra times que precisam entregar sob pressão.</p>
       <div class="tags"><span>Performance</span><span>Resiliência</span><span>Times de vendas</span></div>
       <a class="cta wa-link" data-msg="Oi Lucas! Quero uma proposta da palestra Mentalidade Competitiva.">PEDIR PROPOSTA ↗</a><span class="big">4ª</span></div>
   </div>
 
   <div class="biz">
-    <div class="bz"><span class="n">Negócio</span><h4>Business Advisor</h4><span class="serif">marca e conteúdo pro seu negócio</span>
+    <div class="bz" id="advisor"><span class="n">Negócio</span><h4>Business Advisor</h4><span class="serif">marca e conteúdo pro seu negócio</span>
       <p>Pra quem tem um negócio e quer ser lembrado: clínica, consultório, escritório, consultoria, loja ou empresa pequena. A gente senta junto e pensa a sua marca com estratégia de agência.</p>
       <ul><li>Diagnóstico e posicionamento da marca</li><li>Linha de conteúdo, formatos e calendário</li><li>Encontros mensais pra ajustar a rota</li></ul>
       <a class="wa-link" data-msg="Oi Lucas! Quero saber sobre o Business Advisor para o meu negócio.">Pedir proposta ↗</a></div>
-    <div class="bz"><span class="n">Estratégia</span><h4>Brand &amp; Sports Marketing Advisor</h4><span class="serif">a cabeça de agência do seu lado</span>
+    <div class="bz" id="bsm"><span class="n">Estratégia</span><h4>Brand &amp; Sports Marketing Advisor</h4><span class="serif">a cabeça de agência do seu lado</span>
       <p>Pra marca que quer entrar no esporte ou se comunicar melhor com quem ama esporte.</p>
       <ul><li>Estratégia de marca e posicionamento</li><li>Sports marketing e calendário esportivo</li><li>Direção criativa de campanhas e conteúdo</li></ul>
       <a class="wa-link" data-msg="Oi Lucas! Quero conversar sobre estratégia de marca e sports marketing.">Pedir proposta ↗</a></div>
-    <div class="bz"><span class="n">Conteúdo</span><h4>Embaixador de marca</h4><span class="serif">sua marca dentro do jogo</span>
+    <div class="bz" id="embaixador"><span class="n">Conteúdo</span><h4>Embaixador de marca</h4><span class="serif">sua marca dentro do jogo</span>
       <p>Eu levo a sua marca pro conteúdo que a audiência já assiste, com a minha linguagem e a minha cara.</p>
       <ul><li>Embaixador de marca de longo prazo</li><li>Conteúdo patrocinado e séries</li><li>Cobertura de jogos e viagens</li></ul>
       <a class="wa-link" data-msg="Oi Lucas! Quero conversar sobre você ser embaixador da minha marca.">Pedir proposta ↗</a></div>
-    <div class="bz"><span class="n">Ao vivo</span><h4>Eventos e workshops</h4><span class="serif">host, painel e game day</span>
+    <div class="bz" id="eventos"><span class="n">Ao vivo</span><h4>Eventos e workshops</h4><span class="serif">host, painel e game day</span>
       <p>Experiências presenciais ou online pra clientes, convidados ou o seu time.</p>
       <ul><li>Apresentação de eventos e painéis</li><li>Watch party de Super Bowl e game day</li><li>Workshops in company de NFL, marca ou conteúdo</li></ul>
       <a class="wa-link" data-msg="Oi Lucas! Quero você no meu evento ou workshop.">Pedir proposta ↗</a></div>
@@ -563,6 +612,13 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 let i=0;const pre=k=>{const x=im[k%im.length];if(x.loading!=='eager'){x.loading='eager';x.src=x.src}};pre(1);pre(2);
 const go=()=>{const n=(i+1)%im.length;pre(n+1);if(!im[n].complete||!im[n].naturalWidth){pre(n);return}im[i].classList.remove('on');i=n;im[i].classList.add('on');cap.textContent=im[i].dataset.cap;bar.classList.remove('run');void bar.offsetWidth;bar.classList.add('run')};
 bar.classList.add('run');setInterval(go,4000);})();
+(function(){const r=document.getElementById('rail'),d=document.getElementById('dots');if(!r)return;
+const ps=[...r.children];ps.forEach(()=>d.appendChild(document.createElement('i')));
+const bs=document.querySelectorAll('.vitrine .arrows button');
+const upd=()=>{const w=ps[0].offsetWidth+16,k=Math.round(r.scrollLeft/w);[...d.children].forEach((x,j)=>x.classList.toggle('on',j===Math.min(k,ps.length-1)));
+bs[0].disabled=r.scrollLeft<4;bs[1].disabled=r.scrollLeft+r.clientWidth>=r.scrollWidth-4};
+r.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+bs.forEach(b=>b.onclick=()=>r.scrollBy({left:(ps[0].offsetWidth+16)*(+b.dataset.d),behavior:'smooth'}));})();
 </script>
 </body>
 </html>
