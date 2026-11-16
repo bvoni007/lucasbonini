@@ -58,7 +58,13 @@ nav .btn{padding:10px 18px;font-size:14px}
 .hero p.lead{font-size:19px;color:#b9c7c5;max-width:560px}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 .photo{position:relative;justify-self:end;width:100%;max-width:440px}
-.photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:24px;border:1px solid #19b3a655;box-shadow:0 40px 120px -30px #19b3a666}
+.slides{position:relative;aspect-ratio:4/5;width:100%;border-radius:24px;overflow:hidden;border:1px solid #19b3a655;box-shadow:0 40px 120px -30px #19b3a666;background:var(--panel)}
+.slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+.slides img.on{opacity:1}
+.slides .cap{position:absolute;right:12px;bottom:12px;z-index:2;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#eef3f2;background:#060a0ab3;backdrop-filter:blur(6px);padding:6px 10px;border-radius:6px;transition:opacity .4s}
+.slides .bar{position:absolute;left:0;top:0;height:3px;background:var(--gold);z-index:2;width:0}
+.slides .bar.run{animation:bar 4s linear forwards}
+@keyframes bar{to{width:100%}}
 .photo .badge{position:absolute;left:-28px;bottom:36px;background:#060a0ae6;border:1px solid var(--line);border-radius:14px;padding:14px 18px;backdrop-filter:blur(8px)}
 .photo .badge b{font-family:var(--f-disp);font-weight:900;font-size:30px;color:var(--gold2);display:block;line-height:1}
 .photo .badge small{color:var(--mut);font-size:13px}
@@ -255,7 +261,25 @@ footer .sign{font-family:var(--f-serif);font-style:italic;font-size:22px;color:#
       </div>
     </div>
     <div class="photo">
-      <img src="img/lucas.jpg" alt="Retrato de Lucas Bonini" width="1120" height="1400">
+      <div class="slides" id="slides">
+        <img src="img/lucas.jpg" alt="Retrato de Lucas Bonini" data-cap="Lucas Bonini" style="object-position:center 30%" class="on" fetchpriority="high">
+        <img src="img/fotos/01.jpg" alt="Lucas Bonini em Hard Rock Stadium · Miami" data-cap="Hard Rock Stadium · Miami" style="object-position:center 40%" loading="lazy" decoding="async">
+        <img src="img/fotos/02.jpg" alt="Lucas Bonini em Kaseya Center · Miami" data-cap="Kaseya Center · Miami" style="object-position:center 40%" loading="lazy" decoding="async">
+        <img src="img/fotos/03.jpg" alt="Lucas Bonini em Metropolitano · Madrid" data-cap="Metropolitano · Madrid" style="object-position:center 55%" loading="lazy" decoding="async">
+        <img src="img/fotos/04.jpg" alt="Lucas Bonini em Madrid" data-cap="Madrid" style="object-position:center 30%" loading="lazy" decoding="async">
+        <img src="img/fotos/05.jpg" alt="Lucas Bonini em NFL Madrid Game" data-cap="NFL Madrid Game" style="object-position:center 50%" loading="lazy" decoding="async">
+        <img src="img/fotos/06.jpg" alt="Lucas Bonini em GP São Paulo · F1" data-cap="GP São Paulo · F1" style="object-position:center 55%" loading="lazy" decoding="async">
+        <img src="img/fotos/07.jpg" alt="Lucas Bonini em Hard Rock Stadium · Miami" data-cap="Hard Rock Stadium · Miami" style="object-position:center 40%" loading="lazy" decoding="async">
+        <img src="img/fotos/08.jpg" alt="Lucas Bonini em NFL São Paulo" data-cap="NFL São Paulo" style="object-position:center 45%" loading="lazy" decoding="async">
+        <img src="img/fotos/09.jpg" alt="Lucas Bonini em No palco" data-cap="No palco" style="object-position:72% center" loading="lazy" decoding="async">
+        <img src="img/fotos/10.jpg" alt="Lucas Bonini em Draft · Green Bay" data-cap="Draft · Green Bay" style="object-position:center 55%" loading="lazy" decoding="async">
+        <img src="img/fotos/11.jpg" alt="Lucas Bonini em NFL Draft 2025" data-cap="NFL Draft 2025" style="object-position:center 45%" loading="lazy" decoding="async">
+        <img src="img/fotos/12.jpg" alt="Lucas Bonini em NFL Draft 2025" data-cap="NFL Draft 2025" style="object-position:center 50%" loading="lazy" decoding="async">
+        <img src="img/fotos/13.jpg" alt="Lucas Bonini em Lambeau Field" data-cap="Lambeau Field" style="object-position:center 55%" loading="lazy" decoding="async">
+        <img src="img/fotos/14.jpg" alt="Lucas Bonini em Lambeau Field" data-cap="Lambeau Field" style="object-position:center 50%" loading="lazy" decoding="async">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="cap" aria-hidden="true">Lucas Bonini</span>
+      </div>
       <span class="corner">DESDE 2010</span>
       <div class="badge"><b>+<span class="yrs">16</span> anos</b><small>no universo NFL</small></div>
     </div>
@@ -533,6 +557,12 @@ const WA='5511981388897';
 document.querySelectorAll('.wa-link').forEach(a=>{a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(a.dataset.msg||'Oi Lucas!');a.target='_blank';a.rel='noopener'});
 const y=new Date().getFullYear();document.getElementById('y').textContent=y;
 document.querySelectorAll('.yrs').forEach(e=>e.textContent=y-2010);
+(function(){const box=document.getElementById('slides');if(!box)return;
+const im=[...box.querySelectorAll('img')],cap=box.querySelector('.cap'),bar=box.querySelector('.bar');
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+let i=0;const pre=k=>{const x=im[k%im.length];if(x.loading!=='eager'){x.loading='eager';x.src=x.src}};pre(1);pre(2);
+const go=()=>{const n=(i+1)%im.length;pre(n+1);if(!im[n].complete||!im[n].naturalWidth){pre(n);return}im[i].classList.remove('on');i=n;im[i].classList.add('on');cap.textContent=im[i].dataset.cap;bar.classList.remove('run');void bar.offsetWidth;bar.classList.add('run')};
+bar.classList.add('run');setInterval(go,4000);})();
 </script>
 </body>
 </html>
