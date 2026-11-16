@@ -51,7 +51,7 @@ nav .btn{padding:10px 18px;font-size:14px}
 .hero{position:relative;padding-block:150px 90px;background:radial-gradient(60% 70% at 78% 40%,#0f4c47 0%,#08201e 45%,var(--bg) 75%)}
 .hero:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#ffffff05 0 1px,transparent 1px 3px);pointer-events:none}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;position:relative;z-index:1}
-.hero .tag{color:var(--teal2);display:inline-block;border:1px solid #19b3a644;padding:7px 14px;border-radius:999px;background:#19b3a610}
+.hero .tag{color:var(--teal2);display:inline-block;white-space:nowrap;max-width:100%;border:1px solid #19b3a644;padding:7px 14px;border-radius:999px;background:#19b3a610}
 .hero h1{font-size:clamp(40px,5.8vw,80px);margin:24px 0 22px;letter-spacing:-.01em;font-weight:900}
 .hero h1 .hl{color:var(--gold2)}
 .hero h1 .serif{font-size:1.05em;color:var(--teal2)}
@@ -101,6 +101,9 @@ nav .btn{padding:10px 18px;font-size:14px}
 .band hr{flex:1;border:0;border-top:1px solid var(--line)}
 
 .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.offers.two{grid-template-columns:1fr 1fr;max-width:1000px}
+.talk .cta{display:inline-block;margin-top:22px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:#111;background:var(--gold);padding:11px 16px;border-radius:999px;position:relative;z-index:1;transition:.2s}
+.talk .cta:hover{background:var(--gold2)}
 .offer{position:relative;background:linear-gradient(180deg,#0f1a19,#0a1110);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:.3s;min-width:0}
 .offer:hover{border-color:#19b3a688;transform:translateY(-4px);box-shadow:0 30px 70px -30px #19b3a655}
 .offer .art{aspect-ratio:16/10;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
@@ -137,7 +140,7 @@ nav .btn{padding:10px 18px;font-size:14px}
 .talk .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
 .talk .tags span{font-family:var(--f-mono);font-size:11.5px;border:1px solid var(--line);padding:5px 9px;border-radius:7px;color:#c2ccca}
 .talk .big{position:absolute;right:18px;bottom:-26px;font-family:var(--f-disp);font-weight:900;font-size:150px;line-height:1;color:#e3b23c10;pointer-events:none}
-.biz{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.biz{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .bz{border:1px solid var(--line);border-radius:22px;padding:30px 26px;background:var(--panel);display:flex;flex-direction:column;transition:.3s;min-width:0}
 .bz:hover{border-color:#e3b23c88}
 .bz .n{font-family:var(--f-mono);color:var(--mut);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
@@ -220,6 +223,8 @@ footer .sign{font-family:var(--f-serif);font-style:italic;font-size:22px;color:#
   .pl .ic{width:44px;height:44px;font-size:17px}
   nav .btn{display:none}
   .talk .big{font-size:110px}
+  .hero .tag{font-size:10px;letter-spacing:.07em;padding:7px 11px}
+  .offers.two{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){.ruler .track{animation:none}*{transition:none!important}}
 </style>
@@ -258,8 +263,8 @@ footer .sign{font-family:var(--f-serif);font-style:italic;font-size:22px;color:#
 </header>
 
 <div class="ruler" aria-hidden="true"><div class="track">
-  <span>NFL em 1 hora</span><i>·</i><span>Destrave o comunicador</span><i>·</i><span>Creative advisor</span><i>·</i><span>BONITALKS</span><i>·</i><span>Embaixador de marca</span><i>·</i><span>Eventos e workshops</span><i>·</i>
-  <span>NFL em 1 hora</span><i>·</i><span>Destrave o comunicador</span><i>·</i><span>Creative advisor</span><i>·</i><span>BONITALKS</span><i>·</i><span>Embaixador de marca</span><i>·</i><span>Eventos e workshops</span><i>·</i>
+  <span>NFL em 1 hora</span><i>·</i><span>Destrave o comunicador</span><i>·</i><span>BONITALKS</span><i>·</i><span>Business advisor</span><i>·</i><span>Embaixador de marca</span><i>·</i><span>Eventos e workshops</span><i>·</i>
+  <span>NFL em 1 hora</span><i>·</i><span>Destrave o comunicador</span><i>·</i><span>Business advisor</span><i>·</i><span>BONITALKS</span><i>·</i><span>Embaixador de marca</span><i>·</i><span>Eventos e workshops</span><i>·</i>
 </div></div>
 
 <!-- COMPOSIÇÃO -->
@@ -303,8 +308,8 @@ footer .sign{font-family:var(--f-serif);font-style:italic;font-size:22px;color:#
 <!-- CAMINHOS -->
 <section id="caminhos" style="padding-block:0 20px"><div class="wrap">
   <div class="paths">
-    <a href="#voce" class="path"><div><b>Para você</b><small>Aprender o jogo, destravar a comunicação, construir sua marca pessoal.</small></div><span class="ar">↓</span></a>
-    <a href="#empresas" class="path"><div><b>Para empresas e marcas</b><small>Palestras, estratégia, embaixador de marca, eventos e workshops.</small></div><span class="ar">↓</span></a>
+    <a href="#voce" class="path"><div><b>Para você</b><small>Aprender o jogo e destravar o comunicador que existe em você.</small></div><span class="ar">↓</span></a>
+    <a href="#empresas" class="path"><div><b>Para empresas e marcas</b><small>Palestras, business advisor, estratégia, embaixador de marca, eventos e workshops.</small></div><span class="ar">↓</span></a>
   </div>
 </div></section>
 
@@ -313,10 +318,10 @@ footer .sign{font-family:var(--f-serif);font-style:italic;font-size:22px;color:#
   <div class="band"><span class="who">Para você · pessoa física</span><hr></div>
   <div class="head">
     <h2>Uma hora comigo muda o jeito que você vê.</h2>
-    <p>Atendimentos individuais, por videochamada, com agenda direto comigo. Dois com preço fechado e um sob medida.</p>
+    <p>Atendimentos individuais, por videochamada, com preço fechado e agenda direto comigo.</p>
   </div>
 
-  <div class="offers">
+  <div class="offers two">
     <!-- NFL EM 1 HORA -->
     <article class="offer" id="nfl1h">
       <div class="art" aria-hidden="true">
@@ -406,42 +411,6 @@ footer .sign{font-family:var(--f-serif);font-style:italic;font-size:22px;color:#
       </div>
     </article>
 
-    <!-- CREATIVE ADVISOR PF -->
-    <article class="offer" id="advisor">
-      <div class="art" aria-hidden="true">
-        <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
-          <rect width="400" height="250" fill="#0d1413"/>
-          <g stroke="#ffffff0d"><path d="M0 25H400M0 50H400M0 75H400M0 100H400M0 125H400M0 150H400M0 175H400M0 200H400M0 225H400M25 0V250M50 0V250M75 0V250M100 0V250M125 0V250M150 0V250M175 0V250M200 0V250M225 0V250M250 0V250M275 0V250M300 0V250M325 0V250M350 0V250M375 0V250"/></g>
-          <g stroke="#7fe3d9" stroke-opacity=".55" stroke-width="1.6" fill="none"><path d="M200 125L95 60M200 125L310 55M200 125L90 190M200 125L315 195M200 125L205 30"/></g>
-          <circle cx="200" cy="125" r="34" fill="#e3b23c"/>
-          <text x="200" y="121" text-anchor="middle" fill="#111" font-family="Saira, sans-serif" font-weight="900" font-size="13">SUA</text>
-          <text x="200" y="137" text-anchor="middle" fill="#111" font-family="Saira, sans-serif" font-weight="900" font-size="13">MARCA</text>
-          <g font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="1" text-anchor="middle">
-            <rect x="45" y="44" width="100" height="30" rx="15" fill="#0e1716" stroke="#19b3a6"/><text x="95" y="63" fill="#7fe3d9">TOM DE VOZ</text>
-            <rect x="262" y="40" width="96" height="30" rx="15" fill="#0e1716" stroke="#19b3a6"/><text x="310" y="59" fill="#7fe3d9">PÚBLICO</text>
-            <rect x="40" y="175" width="100" height="30" rx="15" fill="#0e1716" stroke="#19b3a6"/><text x="90" y="194" fill="#7fe3d9">FORMATOS</text>
-            <rect x="262" y="180" width="106" height="30" rx="15" fill="#0e1716" stroke="#19b3a6"/><text x="315" y="199" fill="#7fe3d9">CALENDÁRIO</text>
-            <rect x="160" y="14" width="90" height="30" rx="15" fill="#0e1716" stroke="#ff8a6b"/><text x="205" y="33" fill="#ff8a6b">HISTÓRIA</text>
-          </g>
-        </svg>
-      </div>
-      <div class="body">
-        <span class="chip">Sob medida · mensal</span>
-        <h3>Creative advisor</h3>
-        <span class="serif sub">Sua marca pessoal pensada com estratégia de agência.</span>
-        <p class="desc">Pra profissional que quer ser lembrado: psicólogo, médico, advogado, consultor, empreendedor. A gente senta junto e pensa o seu posicionamento, o seu conteúdo e como você aparece.</p>
-        <ul class="steps">
-          <li><span><b>Diagnóstico:</b> onde você está e onde quer chegar</span></li>
-          <li><span><b>Posicionamento:</b> o que te diferencia e como contar isso</span></li>
-          <li><span><b>Conteúdo:</b> temas, formatos e calendário</span></li>
-          <li><span><b>Acompanhamento:</b> encontros mensais pra ajustar a rota</span></li>
-        </ul>
-        <div class="price">
-          <div class="v q">Sob consulta<em>formato e duração combinados com você</em></div>
-          <a class="btn ghost wa-link" data-msg="Oi Lucas! Quero saber sobre o Creative advisor para a minha marca pessoal.">Pedir proposta</a>
-        </div>
-      </div>
-    </article>
   </div>
 
   <div class="how">
@@ -464,16 +433,22 @@ footer .sign{font-family:var(--f-serif);font-style:italic;font-size:22px;color:#
   <div class="talks">
     <div class="talk"><span class="k">Formato 01</span><h3>Seja o Quarterback da Sua Vida</h3>
       <p>O quarterback lê o campo, decide em segundos e assume a responsabilidade pela jogada. Uma palestra sobre liderança, tomada de decisão e protagonismo, contada com as histórias da NFL.</p>
-      <div class="tags"><span>Liderança</span><span>Decisão</span><span>Protagonismo</span></div><span class="big">QB</span></div>
+      <div class="tags"><span>Liderança</span><span>Decisão</span><span>Protagonismo</span></div>
+      <a class="cta wa-link" data-msg="Oi Lucas! Quero uma proposta da palestra Seja o Quarterback da Sua Vida.">PEDIR PROPOSTA ↗</a><span class="big">QB</span></div>
     <div class="talk"><span class="k">Formato 02</span><h3>Mentalidade Competitiva</h3>
       <p>O que os campeões fazem diferente quando o placar aperta. Uma palestra sobre performance, disciplina e resiliência, pra times que precisam entregar sob pressão.</p>
-      <div class="tags"><span>Performance</span><span>Resiliência</span><span>Times de vendas</span></div><span class="big">4ª</span></div>
+      <div class="tags"><span>Performance</span><span>Resiliência</span><span>Times de vendas</span></div>
+      <a class="cta wa-link" data-msg="Oi Lucas! Quero uma proposta da palestra Mentalidade Competitiva.">PEDIR PROPOSTA ↗</a><span class="big">4ª</span></div>
   </div>
 
   <div class="biz">
+    <div class="bz"><span class="n">Negócio</span><h4>Business Advisor</h4><span class="serif">marca e conteúdo pro seu negócio</span>
+      <p>Pra quem tem um negócio e quer ser lembrado: clínica, consultório, escritório, consultoria, loja ou empresa pequena. A gente senta junto e pensa a sua marca com estratégia de agência.</p>
+      <ul><li>Diagnóstico e posicionamento da marca</li><li>Linha de conteúdo, formatos e calendário</li><li>Encontros mensais pra ajustar a rota</li></ul>
+      <a class="wa-link" data-msg="Oi Lucas! Quero saber sobre o Business Advisor para o meu negócio.">Pedir proposta ↗</a></div>
     <div class="bz"><span class="n">Estratégia</span><h4>Brand &amp; Sports Marketing Advisor</h4><span class="serif">a cabeça de agência do seu lado</span>
       <p>Pra marca que quer entrar no esporte ou se comunicar melhor com quem ama esporte.</p>
-      <ul><li>Estratégia de marca e posicionamento</li><li>Sports marketing e calendário esportivo</li><li>Creative advisor de campanhas e conteúdo</li></ul>
+      <ul><li>Estratégia de marca e posicionamento</li><li>Sports marketing e calendário esportivo</li><li>Direção criativa de campanhas e conteúdo</li></ul>
       <a class="wa-link" data-msg="Oi Lucas! Quero conversar sobre estratégia de marca e sports marketing.">Pedir proposta ↗</a></div>
     <div class="bz"><span class="n">Conteúdo</span><h4>Embaixador de marca</h4><span class="serif">sua marca dentro do jogo</span>
       <p>Eu levo a sua marca pro conteúdo que a audiência já assiste, com a minha linguagem e a minha cara.</p>
@@ -523,7 +498,7 @@ footer .sign{font-family:var(--f-serif);font-style:italic;font-size:22px;color:#
   <div class="head c"><span class="mono">Dúvidas</span><h2>Antes de agendar</h2></div>
   <div class="faq">
     <details><summary>Preciso saber alguma coisa de futebol americano pra fazer o NFL em 1 hora?</summary><p>Nada. A sessão foi pensada pra quem está começando do zero. Se você já sabe um pouco, a gente aprofunda onde fizer sentido.</p></details>
-    <details><summary>Qual a diferença entre Destrave o comunicador e Creative advisor?</summary><p>O Destrave é pra começar: duas sessões e um plano pra você sair do zero. O Creative advisor é um acompanhamento contínuo da sua marca pessoal, pra quem quer construir posicionamento com estratégia.</p></details>
+    <details><summary>Qual a diferença entre Destrave o comunicador e Business Advisor?</summary><p>O Destrave é pra você, pessoa: duas sessões e um plano pra começar a criar conteúdo. O Business Advisor é pro seu negócio: um acompanhamento contínuo da marca e do conteúdo da empresa.</p></details>
     <details><summary>Como funcionam as sessões?</summary><p>Videochamada pelo Google Meet, individual, no dia e horário que você escolher. É só ter uma boa conexão e trazer suas perguntas.</p></details>
     <details><summary>Posso fazer o NFL em 1 hora com amigos?</summary><p>Pode. Me chama no WhatsApp e a gente combina uma sessão em grupo.</p></details>
     <details><summary>E se eu precisar remarcar?</summary><p>Sem problema. Avisando com até 24 horas de antecedência, a gente remarca sem custo.</p></details>
@@ -544,8 +519,8 @@ footer .sign{font-family:var(--f-serif);font-style:italic;font-size:22px;color:#
 <footer><div class="wrap">
   <div class="cols">
     <div><a href="#" class="logo">LUCAS <span>BONINI</span></a><p class="sign">“É assim que eu vejo o jogo.”</p></div>
-    <div><h5>Para você</h5><ul><li><a href="#nfl1h">NFL em 1 hora</a></li><li><a href="#destrava">Destrave o comunicador</a></li><li><a href="#advisor">Creative advisor</a></li></ul></div>
-    <div><h5>Para empresas</h5><ul><li><a href="#empresas">BONITALKS</a></li><li><a href="#empresas">Brand advisor</a></li><li><a href="#empresas">Embaixador de marca</a></li><li><a href="#empresas">Eventos e workshops</a></li></ul></div>
+    <div><h5>Para você</h5><ul><li><a href="#nfl1h">NFL em 1 hora</a></li><li><a href="#destrava">Destrave o comunicador</a></li></ul></div>
+    <div><h5>Para empresas</h5><ul><li><a href="#empresas">BONITALKS</a></li><li><a href="#empresas">Business advisor</a></li><li><a href="#empresas">Sports marketing</a></li><li><a href="#empresas">Embaixador de marca</a></li><li><a href="#empresas">Eventos e workshops</a></li></ul></div>
     <div><h5>Contato</h5><ul><li><a class="wa-link" data-msg="Oi Lucas!">WhatsApp</a></li><li>lucasbonini@me.com</li><li><a href="https://www.instagram.com/lucasbonini" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@bonizone" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.linkedin.com/in/lucasbonini" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
   </div>
   <div class="copy"><span>© <span id="y">2026</span> Lucas Bonini. Todos os direitos reservados.</span><span>São Paulo · Brasil</span></div>
